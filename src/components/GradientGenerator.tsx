@@ -60,6 +60,7 @@ export default function GradientGenerator() {
     height: 540,
     quality: 20,
     movementScale: 1.0,
+    backgroundColor: '#ffffff',
   });
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
@@ -312,11 +313,11 @@ export default function GradientGenerator() {
   };
 
   const drawFrame = (ctx: CanvasRenderingContext2D, time: number) => {
-    const { width, height, blur } = config;
+    const { width, height, blur, backgroundColor } = config;
     const minDim = Math.min(width, height);
     
     // Clear canvas
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     
     // Apply blur
@@ -559,6 +560,31 @@ export default function GradientGenerator() {
                   accept="image/*"
                   className="hidden"
                 />
+              </div>
+
+              {/* Background Color */}
+              <div className="mb-4">
+                <label className="text-xs font-medium text-[#5f6368] mb-2 block">Background</label>
+                <div className="flex items-center gap-3 group">
+                  <div className="relative">
+                    <div 
+                      className="w-10 h-10 rounded-full border border-[#dadce0] shadow-sm cursor-pointer transition-transform hover:scale-105"
+                      style={{ backgroundColor: config.backgroundColor }}
+                    />
+                    <input 
+                      type="color" 
+                      value={config.backgroundColor}
+                      onChange={(e) => setConfig({ ...config, backgroundColor: e.target.value })}
+                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                    />
+                  </div>
+                  <input 
+                    type="text" 
+                    value={config.backgroundColor}
+                    onChange={(e) => setConfig({ ...config, backgroundColor: e.target.value })}
+                    className="flex-1 text-sm font-mono border border-[#dadce0] rounded-md px-3 py-2 focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] uppercase text-[#3c4043]"
+                  />
+                </div>
               </div>
 
               {/* Presets */}
