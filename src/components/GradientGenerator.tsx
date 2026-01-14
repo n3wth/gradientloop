@@ -463,28 +463,28 @@ export default function GradientGenerator() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#f8f9fa] text-[#202124] font-sans selection:bg-blue-100">
+    <div className="flex flex-col h-screen bg-black text-white font-sans selection:bg-violet-500/30">
       {/* Header */}
-      <header className="bg-white border-b border-[#dadce0] px-6 py-3 flex items-center justify-between sticky top-0 z-20">
+      <header className="bg-black/50 backdrop-blur-md border-b border-white/10 px-6 py-3 flex items-center justify-between sticky top-0 z-20">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#4285f4] to-[#34a853] rounded-xl flex items-center justify-center text-white shadow-sm">
+          <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-amber-400 rounded-xl flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
              <RefreshCw size={20} className="animate-spin-slow" style={{ animationDuration: '10s' }} />
           </div>
           <div>
-            <h1 className="text-xl font-medium text-[#202124] leading-tight">
+            <h1 className="text-xl font-semibold text-white leading-tight">
               Gradient Loop
             </h1>
-            <p className="text-xs text-[#5f6368]">Internal Tools</p>
+            <p className="text-xs text-violet-400">newth.ai</p>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <button 
+          <button
             onClick={handleExport}
             disabled={isExporting}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all shadow-sm ${
-              isExporting 
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-[#1a73e8] text-white hover:bg-[#1557b0] hover:shadow-md active:shadow-sm'
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg ${
+              isExporting
+                ? 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                : 'bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-500 hover:to-violet-400 shadow-violet-500/30 hover:shadow-violet-500/40 active:shadow-sm'
             }`}
           >
             {isExporting ? (
@@ -504,23 +504,23 @@ export default function GradientGenerator() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar Controls */}
-        <aside className="w-80 bg-white border-r border-[#dadce0] overflow-y-auto flex flex-col z-10">
+        <aside className="w-80 bg-black/90 backdrop-blur-md border-r border-white/10 overflow-y-auto flex flex-col z-10">
           <div className="p-6 space-y-8">
-            
+
             {/* AI Assistant */}
           <section>
-            <h2 className="text-xs font-bold text-[#5f6368] uppercase tracking-wider mb-4">AI Assistant</h2>
+            <h2 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-4">AI Assistant</h2>
             <div className="relative">
               <textarea
                 value={aiPrompt}
                 onChange={(e) => setAiPrompt(e.target.value)}
                 placeholder="Describe your desired vibe (e.g., 'Calm ocean waves with space for text in the center')"
-                className="w-full min-h-[100px] p-3 text-sm border border-[#dadce0] rounded-lg focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] resize-none bg-white text-[#3c4043]"
+                className="w-full min-h-[100px] p-3 text-sm border border-white/10 rounded-lg focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 resize-none bg-white/5 text-white placeholder:text-gray-500"
               />
               <button
                 onClick={handleAiGenerate}
                 disabled={isAiLoading || !aiPrompt.trim()}
-                className="absolute bottom-2 right-2 p-2 bg-[#1a73e8] text-white rounded-full hover:bg-[#1557b0] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors shadow-sm"
+                className="absolute bottom-2 right-2 p-2 bg-violet-600 text-white rounded-full hover:bg-violet-500 disabled:bg-gray-800 disabled:cursor-not-allowed transition-colors shadow-lg shadow-violet-500/20"
               >
                 {isAiLoading ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -531,23 +531,23 @@ export default function GradientGenerator() {
             </div>
           </section>
 
-          <hr className="border-[#dadce0]" />
+          <hr className="border-white/10" />
 
           {/* Colors */}
             <section>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xs font-bold text-[#5f6368] uppercase tracking-wider">Palette</h2>
+                <h2 className="text-xs font-bold text-amber-400 uppercase tracking-wider">Palette</h2>
                 <div className="flex gap-2">
-                  <button 
+                  <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="p-2 hover:bg-[#f1f3f4] rounded-full text-[#5f6368] transition-colors"
+                    className="p-2 hover:bg-white/10 rounded-full text-gray-400 hover:text-violet-400 transition-colors"
                     title="Import from Image"
                   >
                     <ImageIcon size={18} />
                   </button>
-                  <button 
+                  <button
                     onClick={() => setColors([...colors, '#ffffff'])}
-                    className="p-2 hover:bg-[#f1f3f4] rounded-full text-[#5f6368] transition-colors"
+                    className="p-2 hover:bg-white/10 rounded-full text-gray-400 hover:text-violet-400 transition-colors"
                     title="Add Color"
                   >
                     <Plus size={18} />
@@ -564,25 +564,25 @@ export default function GradientGenerator() {
 
               {/* Background Color */}
               <div className="mb-4">
-                <label className="text-xs font-medium text-[#5f6368] mb-2 block">Background</label>
+                <label className="text-xs font-medium text-gray-400 mb-2 block">Background</label>
                 <div className="flex items-center gap-3 group">
                   <div className="relative">
-                    <div 
-                      className="w-10 h-10 rounded-full border border-[#dadce0] shadow-sm cursor-pointer transition-transform hover:scale-105"
+                    <div
+                      className="w-10 h-10 rounded-full border border-white/20 shadow-lg cursor-pointer transition-transform hover:scale-105"
                       style={{ backgroundColor: config.backgroundColor }}
                     />
-                    <input 
-                      type="color" 
+                    <input
+                      type="color"
                       value={config.backgroundColor}
                       onChange={(e) => setConfig({ ...config, backgroundColor: e.target.value })}
                       className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                     />
                   </div>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={config.backgroundColor}
                     onChange={(e) => setConfig({ ...config, backgroundColor: e.target.value })}
-                    className="flex-1 text-sm font-mono border border-[#dadce0] rounded-md px-3 py-2 focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] uppercase text-[#3c4043]"
+                    className="flex-1 text-sm font-mono border border-white/10 rounded-md px-3 py-2 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 uppercase text-white bg-white/5"
                   />
                 </div>
               </div>
@@ -593,7 +593,7 @@ export default function GradientGenerator() {
                   <button
                     key={preset.name}
                     onClick={() => setColors(preset.colors)}
-                    className="px-3 py-1.5 text-xs font-medium bg-white border border-[#dadce0] hover:bg-[#f1f3f4] hover:border-[#dadce0] rounded-full transition-colors text-[#3c4043]"
+                    className="px-3 py-1.5 text-xs font-medium bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/50 rounded-full transition-colors text-gray-300 hover:text-white"
                   >
                     {preset.name}
                   </button>
@@ -604,12 +604,12 @@ export default function GradientGenerator() {
                 {colors.map((color, index) => (
                   <div key={index} className="flex items-center gap-3 group">
                     <div className="relative">
-                      <div 
-                        className="w-10 h-10 rounded-full border border-[#dadce0] shadow-sm cursor-pointer transition-transform hover:scale-105"
+                      <div
+                        className="w-10 h-10 rounded-full border border-white/20 shadow-lg cursor-pointer transition-transform hover:scale-105"
                         style={{ backgroundColor: color }}
                       />
-                      <input 
-                        type="color" 
+                      <input
+                        type="color"
                         value={color}
                         onChange={(e) => {
                           const newColors = [...colors];
@@ -619,20 +619,20 @@ export default function GradientGenerator() {
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                       />
                     </div>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       value={color}
                       onChange={(e) => {
                         const newColors = [...colors];
                         newColors[index] = e.target.value;
                         setColors(newColors);
                       }}
-                      className="flex-1 text-sm font-mono border border-[#dadce0] rounded-md px-3 py-2 focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8] uppercase text-[#3c4043]"
+                      className="flex-1 text-sm font-mono border border-white/10 rounded-md px-3 py-2 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 uppercase text-white bg-white/5"
                     />
                     {colors.length > 2 && (
-                      <button 
+                      <button
                         onClick={() => setColors(colors.filter((_, i) => i !== index))}
-                        className="text-[#9aa0a6] hover:text-[#d93025] opacity-0 group-hover:opacity-100 transition-all p-2 hover:bg-[#fce8e6] rounded-full"
+                        className="text-gray-500 hover:text-amber-400 opacity-0 group-hover:opacity-100 transition-all p-2 hover:bg-amber-400/10 rounded-full"
                       >
                         <Trash2 size={16} />
                       </button>
@@ -642,16 +642,16 @@ export default function GradientGenerator() {
               </div>
             </section>
 
-            <hr className="border-[#dadce0]" />
+            <hr className="border-white/10" />
 
             {/* Settings */}
             <section>
-              <h2 className="text-xs font-bold text-[#5f6368] uppercase tracking-wider mb-6">Configuration</h2>
-              
+              <h2 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-6">Configuration</h2>
+
               <div className="space-y-8">
                 {/* Resolution Selector */}
                 <div className="space-y-3">
-                  <label className="text-sm font-medium text-[#3c4043]">Output Resolution</label>
+                  <label className="text-sm font-medium text-white">Output Resolution</label>
                   <div className="grid grid-cols-1 gap-2">
                     {RESOLUTIONS.map((res) => (
                       <button
@@ -659,8 +659,8 @@ export default function GradientGenerator() {
                         onClick={() => setConfig({ ...config, width: res.width, height: res.height })}
                         className={`flex items-center justify-between px-4 py-3 rounded-lg border text-sm transition-all ${
                           config.width === res.width
-                            ? 'border-[#1a73e8] bg-[#e8f0fe] text-[#1a73e8]'
-                            : 'border-[#dadce0] bg-white text-[#3c4043] hover:bg-[#f8f9fa]'
+                            ? 'border-violet-500 bg-violet-500/20 text-violet-300'
+                            : 'border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:border-white/20'
                         }`}
                       >
                         <span>{res.label}</span>
@@ -672,93 +672,93 @@ export default function GradientGenerator() {
 
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <label className="text-[#3c4043] font-medium">Loop Duration</label>
-                    <span className="text-[#5f6368] bg-[#f1f3f4] px-2 py-0.5 rounded text-xs">{config.duration}s</span>
+                    <label className="text-white font-medium">Loop Duration</label>
+                    <span className="text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded text-xs">{config.duration}s</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="10" 
+                  <input
+                    type="range"
+                    min="1"
+                    max="10"
                     step="1"
                     value={config.duration}
                     onChange={(e) => setConfig({...config, duration: parseInt(e.target.value)})}
-                    className="w-full h-1.5 bg-[#dadce0] rounded-lg appearance-none cursor-pointer accent-[#1a73e8]"
+                    className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-violet-500"
                   />
-                  <p className="text-xs text-[#5f6368]">Shorter = Faster animation</p>
+                  <p className="text-xs text-gray-400">Shorter = Faster animation</p>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <label className="text-[#3c4043] font-medium">Movement Range</label>
-                    <span className="text-[#5f6368] bg-[#f1f3f4] px-2 py-0.5 rounded text-xs">{Math.round(config.movementScale * 100)}%</span>
+                    <label className="text-white font-medium">Movement Range</label>
+                    <span className="text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded text-xs">{Math.round(config.movementScale * 100)}%</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="200" 
+                  <input
+                    type="range"
+                    min="0"
+                    max="200"
                     step="10"
                     value={config.movementScale * 100}
                     onChange={(e) => setConfig({...config, movementScale: parseInt(e.target.value) / 100})}
-                    className="w-full h-1.5 bg-[#dadce0] rounded-lg appearance-none cursor-pointer accent-[#1a73e8]"
+                    className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-violet-500"
                   />
-                  <p className="text-xs text-[#5f6368]">Lower this for short loops to keep it calm</p>
+                  <p className="text-xs text-gray-400">Lower this for short loops to keep it calm</p>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <label className="text-[#3c4043] font-medium">Blur Strength</label>
-                    <span className="text-[#5f6368] bg-[#f1f3f4] px-2 py-0.5 rounded text-xs">{config.blur}px</span>
+                    <label className="text-white font-medium">Blur Strength</label>
+                    <span className="text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded text-xs">{config.blur}px</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="200" 
+                  <input
+                    type="range"
+                    min="0"
+                    max="200"
                     step="10"
                     value={config.blur}
                     onChange={(e) => setConfig({...config, blur: parseInt(e.target.value)})}
-                    className="w-full h-1.5 bg-[#dadce0] rounded-lg appearance-none cursor-pointer accent-[#1a73e8]"
+                    className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-violet-500"
                   />
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <label className="text-[#3c4043] font-medium">Frame Rate</label>
-                    <span className="text-[#5f6368] bg-[#f1f3f4] px-2 py-0.5 rounded text-xs">{config.fps} fps</span>
+                    <label className="text-white font-medium">Frame Rate</label>
+                    <span className="text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded text-xs">{config.fps} fps</span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="12" 
-                    max="30" 
+                  <input
+                    type="range"
+                    min="12"
+                    max="30"
                     step="1"
                     value={config.fps}
                     onChange={(e) => setConfig({...config, fps: parseInt(e.target.value)})}
-                    className="w-full h-1.5 bg-[#dadce0] rounded-lg appearance-none cursor-pointer accent-[#1a73e8]"
+                    className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-violet-500"
                   />
-                  <p className="text-xs text-[#5f6368]">Lower FPS = Smaller file size</p>
+                  <p className="text-xs text-gray-400">Lower FPS = Smaller file size</p>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm">
-                    <label className="text-[#3c4043] font-medium">GIF Quality</label>
-                    <span className="text-[#5f6368] bg-[#f1f3f4] px-2 py-0.5 rounded text-xs">
+                    <label className="text-white font-medium">GIF Quality</label>
+                    <span className="text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded text-xs">
                       {config.quality <= 10 ? 'Best' : config.quality <= 20 ? 'Good' : 'Draft'}
                     </span>
                   </div>
-                  <input 
-                    type="range" 
-                    min="1" 
+                  <input
+                    type="range"
+                    min="1"
                     max="50" // Increased max to allow for more compression
                     step="1"
                     value={51 - config.quality}
                     onChange={(e) => setConfig({...config, quality: 51 - parseInt(e.target.value)})}
-                    className="w-full h-1.5 bg-[#dadce0] rounded-lg appearance-none cursor-pointer accent-[#1a73e8]"
+                    className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-violet-500"
                   />
-                  <p className="text-xs text-[#5f6368]">Higher quality = Larger file size</p>
+                  <p className="text-xs text-gray-400">Higher quality = Larger file size</p>
                 </div>
 
-                <button 
+                <button
                   onClick={generateBlobs}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-[#dadce0] rounded-full text-sm font-medium text-[#1a73e8] hover:bg-[#f8f9fa] hover:border-[#d2e3fc] hover:bg-[#e8f0fe] transition-all"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 border border-violet-500/50 rounded-full text-sm font-semibold text-violet-400 hover:bg-violet-500/10 hover:border-violet-500 hover:text-violet-300 transition-all"
                 >
                   <RefreshCw size={16} />
                   Regenerate Pattern
@@ -766,37 +766,37 @@ export default function GradientGenerator() {
               </div>
             </section>
           </div>
-          
-          <div className="mt-auto pt-6 border-t border-gray-100 text-xs text-gray-400 p-6">
+
+          <div className="mt-auto pt-6 border-t border-white/10 text-xs text-gray-500 p-6">
             <p>Export size: {config.width}x{config.height}px</p>
             <p>Frame rate: {config.fps} fps</p>
           </div>
         </aside>
 
         {/* Main Preview Area */}
-        <main className="flex-1 bg-[#f8f9fa] flex items-center justify-center p-12 relative overflow-hidden">
-          
-          <div className="relative shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-2xl overflow-hidden bg-white ring-1 ring-black/5">
-            <canvas 
+        <main className="flex-1 bg-black flex items-center justify-center p-12 relative overflow-hidden">
+
+          <div className="relative shadow-[0_8px_30px_rgba(139,92,246,0.3)] rounded-2xl overflow-hidden bg-black/50 backdrop-blur-sm ring-1 ring-violet-500/20">
+            <canvas
               ref={canvasRef}
               width={config.width}
               height={config.height}
               className="max-w-full max-h-[80vh] w-auto h-auto block"
               style={{ aspectRatio: `${config.width}/${config.height}` }}
             />
-            
+
             {/* Overlay Controls */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white/50 opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <button 
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg shadow-violet-500/20 border border-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="p-2 hover:bg-[#f1f3f4] rounded-full transition-colors text-[#3c4043]"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors text-violet-400"
               >
                 {isPlaying ? <Pause size={24} className="fill-current" /> : <Play size={24} className="fill-current" />}
               </button>
             </div>
           </div>
-          
-          <div className="absolute bottom-4 right-6 text-xs text-[#9aa0a6] font-medium">
+
+          <div className="absolute bottom-4 right-6 text-xs text-gray-600 font-medium">
             Previewing: {config.width}x{config.height}px @ {config.fps}fps
           </div>
         </main>

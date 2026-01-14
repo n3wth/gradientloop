@@ -1,5 +1,5 @@
 {
-  "name": "Gradient Loop Generator",
-  "description": "Create beautiful, looping gradient background animations and export them as GIFs for presentations.",
+  "name": "Gradient Loop",
+  "description": "Create beautiful, looping gradient background animations and export them as GIFs. By newth.ai",
   "requestFramePermissions": []
 }
